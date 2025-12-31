@@ -39,6 +39,7 @@ if device == "cuda:0":
 
 tokenizer = AutoTokenizer.from_pretrained(model_id, cache_dir=os.environ['HUB_CACHE_DIR'], token=os.environ['HF_TOKEN'])
 model = AutoModelForCausalLM.from_pretrained(model_id, **model_kwargs)
+model.resize_token_embeddings(len(tokenizer))   # Prevent size mismatch if tokenizer size differs
 
 os.environ["WANDB_DISABLED"] = "true"
 
@@ -66,5 +67,5 @@ trainer = SFTTrainer(
 
 trainer.train()
 
-trainer.save_model("./models/lora")
-tokenizer.save_pretrained("./models/lora")
+trainer.save_model("./models/lora_cpu")
+tokenizer.save_pretrained("./models/lora_cpu")

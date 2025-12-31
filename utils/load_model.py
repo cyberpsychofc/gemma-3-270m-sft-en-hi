@@ -1,16 +1,9 @@
 import os
 import torch
-from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
+from transformers import AutoTokenizer, AutoModelForCausalLM
 from dotenv import load_dotenv
 
 load_dotenv()
-
-# CUDA required for quantization
-bnb_config = BitsAndBytesConfig(
-    load_in_4bit=True,
-    bnb_4bit_quant_type="nf4",
-    bnb_4bit_compute_dtype=torch.bfloat16
-)
 
 model_id = "google/gemma-3-270m"
 
