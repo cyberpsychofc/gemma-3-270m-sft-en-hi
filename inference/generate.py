@@ -18,10 +18,6 @@ base_model = AutoModelForCausalLM.from_pretrained(
 )
 base_model.resize_token_embeddings(len(tokenizer)) # Prevent size mismatch if tokenizer size differs
 
-# Align tokenizer tokens as before
-if tokenizer.pad_token_id is None:
-    tokenizer.pad_token = tokenizer.eos_token
-
 peft_model = PeftModel.from_pretrained(base_model, "./models/lora_gpu")
 
 input = input("\nEnter : ")
