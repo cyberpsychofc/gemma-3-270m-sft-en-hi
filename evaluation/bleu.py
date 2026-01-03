@@ -1,5 +1,7 @@
 import os
 import torch
+import random
+import numpy as np
 from datasets import load_dataset
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from peft import PeftModel
@@ -59,7 +61,7 @@ for i in tqdm(range(0, len(sources), BATCH_SIZE)):
     with torch.no_grad():
         outputs = peft_model.generate(
             **inputs, 
-            max_new_tokens=100, 
+            max_new_tokens=100,
             pad_token_id=tokenizer.eos_token_id,
             eos_token_id=tokenizer.eos_token_id
         )
