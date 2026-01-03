@@ -14,7 +14,7 @@ The **IIT Bombay English-Hindi** corpus contains parallel corpus for English-Hin
 ### Dataset Size
 - **No. of sentence pairs**: 50000
 
-## Benchmark Results (Work In Progress)
+## Benchmark Results
 Achieves an mean token accuracy of **93.05%** in English to Hindi translation task.
 
 ### English → Hindi
